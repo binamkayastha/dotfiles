@@ -47,12 +47,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
@@ -114,9 +114,21 @@ if ! shopt -oq posix; then
 fi
 
 # Stuff I added  (everything above is default)
-alias ls="ls -h"
+export PATH=$HOME/bin:${PATH}
 
-# Stuff Ian added
-alias rm="rm -i"
 EDITOR=vim
 VISUAL=vim
+export VISUAL="vim"
+
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
+
