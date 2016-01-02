@@ -169,7 +169,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id lock.sh && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id lock.sh && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default" 
+    bindsym Shift+s exec --no-startup-id gksudo poweroff, mode "default" 
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -181,9 +181,9 @@ bindsym $mod+Pause mode "$mode_system"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #status_command 		python ~/.i3pystatusconfigbottom #i3status
- 	#status_command		python ~/.i3pystatusconfigtop
-        status_command		~/conky-i3bar
+        #status_command 		python ~/.i3/.i3pystatusconfigbottom #i3status
+ 	#status_command		python ~/.i3/.i3pystatusconfigtop
+        status_command		~/.i3/conky-i3bar
 	position		bottom	
 	workspace_buttons 	yes
 	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -194,18 +194,18 @@ bar {
 #	modifier		Mod4
 }
 
-bar {
-        status_command 		python ~/.i3pystatusconfigtop #i3status
-        #status_command		$HOME/.conkey-i3bar
-	position		top	
-	workspace_buttons 	no
-	tray_output		none
-	binding_mode_indicator 	no
-	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:DejaVu Sans Mono 12
-	mode 			invisible
-	hidden_state		hide
-}
+#bar {
+#        status_command 		python ~/.i3/.i3pystatusconfigtop #i3status
+#        #status_command		$HOME/.i3/.conkey-i3bar
+#	position		top	
+#	workspace_buttons 	no
+#	tray_output		none
+#	binding_mode_indicator 	no
+#	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#        font pango:DejaVu Sans Mono 12
+#	mode 			invisible
+#	hidden_state		hide
+#}
 
 # My other commandst
 focus_follows_mouse no #Do not follow focus of the mouse.
@@ -218,8 +218,8 @@ new_window pixel 0
 # client.placeholder      #000000 #0c0c0c #ffffff #000000
 #
 client.focused          #4c7899 #000000 #ffffff #484e50
-client.focused_inactive #333333 #000000 ##ffffff #000000
-client.unfocused        #333333 #000000 ##888888 #000000
+client.focused_inactive #333333 #000000 #ffffff #000000
+client.unfocused        #333333 #000000 #888888 #000000
 client.urgent           #2f343a #000000 #ffffff #000000
 client.placeholder      #000000 #000000 #ffffff #000000
 
@@ -233,13 +233,17 @@ bindsym Mod1+Control+Right exec xrandr -o right
 
 # Multimedia Keys
 # ALSA Mixer controls
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ #increase sound volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && killall -USR1 conky #increase sound volume
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- #decrease sound volume
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle       # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5.0 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5.0  # decrease screen brightness
+
+#Print screen and save to ~/screenshots/ folder through scrot
+bindsym Print exec scrot -e 'mv $f ~/screenshots/'
+#bindsym $mod+Print exec scrot -s -e 'mv $f ~/screenshots'
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad. Need to figure out what somepath is.
@@ -249,19 +253,27 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5.0  # decrease screen bright
 #bindsym grave+XF86AudioLowerVolume exec playerctl previous
 #bindsym grave+XF86AudioRaiseVolume exec playerctl next 
 
+bindsym $mod+XF86AudioMute exec playerctl play-pause
+bindsym $mod+XF86AudioLowerVolume exec playerctl previous
+bindsym $mod+XF86AudioRaiseVolume exec playerctl next
+
+# Show battery information by running script
+bindsym $mod+Shift+b exec ~/crontabScripts/batteryNotif.sh
+
 # Assign programs to workspaces. This should really be done in the beginning.
 assign [class="Skype"] → 10: Social
 assign [class="Spotify"] →  7: Media
-assign [class="Firefox" title="Habitica | Your Life The Role Playing Game - Mozilla Firefox"] →  8: HabitRPG
 # class instance window_role con_id id con_mark title urgent
 
 #Things to execute in the beginning
-exec xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
+exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
 #exec sudo mount /dev/sda6 /mnt/WPI        #Mount my WPI drive
 #exec sudo mount /dev/sda5 /mnt/C
 exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25
 #exec --no-startup-id wicd
 #exec --no-startup-id wicd-gtk -t
-exec --no-startup-id touchegg
+#exec --no-startup-id touchegg
 exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
 #exec sudo wpa_supplicant -c wpi_wireless.config -i wlp1s0 (Has to be in CA folder)

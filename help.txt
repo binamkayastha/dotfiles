@@ -1,53 +1,60 @@
-// Here resides some information 
-
-.bashrc
-
 #vim things
-:s/Search/Replace/CommandFlag					vim replace
-:s/Search-Word/replace-Word/g	#Replace in current line only	vim replace
-:%s/Sea	rch-Word/Replace-Word/g	#Replace in every occurence	vim replace
-:%s/Search-Word/Replace-Word/gc	#c adds asking for conformation	vim replace
-:%s/Search-Word/Replace-Word/gi	#i case insensetive 		vim replace
-
+:s/Search/Replace/CommandFlag                    vim replace
+:s/Search-Word/replace-Word/g    #Replace in current line only    vim replace
+:%s/Sea    rch-Word/Replace-Word/g    #Replace in every occurence    vim replace
+:%s/Search-Word/Replace-Word/gc    #c adds asking for conformation    vim replace
+:%s/Search-Word/Replace-Word/gi    #i case insensetive         vim replace
+:set spell spelllang=en_us
+:set nospell
 
 #programs and things
 gpointing-device-settings
 dconf-editor
-tomate #pomodoro timer
-nautilus #ubuntu file manager
-xev    #keypress codes
-gnome-session-monitor   #taskmanager equivalent
-evince #pdf viewer 
-xprop  #find class of program
-x-www-browser  	        #what is users prefered browser
-apt-cache search thingy
-alsamixer		#sound change
+xev    			#keypress codes
+xprop | grep CLASS | less  #find class of program
+mnemosyne 		#flashcard thingy
+ps axjf 		#list processes in a tree
+transmission 	        #torrent client
+tint3		 	#like tint2 but made by tmathmeyer
+apvlv 			#pdf
+xournal 		#pdf
+rifle 			#Open respective file
+hamster			#Time Tracker
+gcalcli			#Calendar helper
+cheese                  #Camera
+haguichi                #Hamachi gui
+gsimplecal              #calendar
 
 WHAT NEEDS TO BE DONE:
-	Media Buttons
-
-WHAT IS ALREADY DONE:
-
-//Screen size change
-xrandr -q 
-xrandr --output eDP1 --mode 1920x1080
+    Media Buttons
+    Compton 
 
 ERRORS:
-
-led to import appliance /mnt/sda6/Term D/CS 2011/Mini-Ubuntu_14.04.1.ova.
-
-Could not create the clone medium '/home/binam/VirtualBox
-VMs/Mini-Ubuntu_14.04.1/Mini-Ubuntu_14.04.1-disk1_1.vmdk'.
-
-VMDK: cannot write allocated data block in '/home/binam/VirtualBox
-VMs/Mini-Ubuntu_14.04.1/Mini-Ubuntu_14.04.1-disk1_1.vmdk' (VERR_DISK_FULL).
-
-Result Code: VBOX_E_FILE_ERROR (0x80BB0004)
-Component: Appliance
-Interface: IAppliance {3059cf9e-25c7-4f0b-9fa5-3c42e441670b}
-
-#MOUSE THINGS:
 xinput --list --short
 //find synaptics
 xinput --list-props (id synaptics)
 xinput --set-prop (id synaptic) (id device property) (value)
+
+RANDOM INFO
+compgen -c #list programs
+alsactl restore #fixes sound
+sudo wpa_supplicant -B -c wpi_wireless.conf -i wlp1s0
+sudo dhcpcd wlp1s0
+sudo systemctl start NetworkManager
+/usr/local/sbin/rc.local
+
+nm-connection-editor GUI
+xmodmap -pke | less
+
+
+learnyounode
+shutter
+xmodmap
+/etc/X11/xorg.conf.d/
+
+setxkbmap dvorak
+setxkbmap us
+
+
+Vbox modules to load
+sudo modprobe -all vboxdrv vboxnetadp vboxnetflt vboxpci

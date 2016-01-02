@@ -1,9 +1,3 @@
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -23,18 +17,12 @@ set incsearch		" do incremental searching
 "set cursorcolumn
 "set cursorline
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
 " In an xterm the mouse should work quite well, thus enable it.
 set mouse=a
 
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -82,10 +70,13 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 
 
 " My edits to .vimrc
-:set number
-:ab #i #include
-:ab #d #define
-:ab pf printf(
+set number
 
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set list
+set listchars=tab:··,trail:⌖,extends:>,precedes:<,nbsp:+
+" set listchars=tab:▸\ ,trail:·
 set spelllang=en
 set spellfile=$HOME/spell/en.utf-8.add
