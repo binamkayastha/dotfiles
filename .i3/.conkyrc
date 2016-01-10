@@ -40,7 +40,6 @@ TEXT
   { "full_text" : "VOL: ${exec amixer | grep "Front Left: P" | cut -d "[" -f2 | cut -d "]" -f1}", "color" : ${if_match "${exec amixer -c 0 get Master | grep Mono: | cut -d "[" -f4 | cut -d "]" -f1}"=="on"}"\#00ff00"${else}"\#ff00000"${endif}},
   { "full_text" : "WPI ${fs_free /WPI} Free" , "color" : "\#ffffff" },
   { "full_text" : "BAT: ${battery_percent BAT1}%", "color" : ${if_match ${battery_percent BAT1}<20}"\#ff0000"${else}"\#ffffff"${endif}},
-  { "full_text" : "status: ${battery BAT1}"},
   { "full_text" : "NET:${wireless_link_qual_perc wlp1s0}%"},
   { "full_text" : "${time %b%e}"},
   { "full_text" : "${time %I:%M:%S %p}"}],
