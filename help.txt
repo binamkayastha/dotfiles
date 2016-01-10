@@ -6,6 +6,7 @@
 :%s/Search-Word/Replace-Word/gi    #i case insensetive         vim replace
 :set spell spelllang=en_us
 :set nospell
+vim -r swpfile
 
 #programs and things
 gpointing-device-settings
