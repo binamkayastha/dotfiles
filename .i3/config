@@ -1,5 +1,5 @@
 # In case anything stupid happens, fix in this config file then
-# run i3-config-wizard in a terminal
+# run i3-msg restart in a terminal
 
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
