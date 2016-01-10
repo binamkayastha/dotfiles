@@ -1,0 +1,14 @@
+Make suer to do the following things to use crontabScripts for battery
+notifications:
+ - Put the script files in your home directory
+ - Change YOURUSERNAMEHERE into whatever your username is. To find your
+   username run the command: echo "echo $USER"
+ - Make sure your notify-send works, by running a test command: notify-send
+   "test"
+Put this in your crontab file:
+
+DISPLAY=:0
+XAUTHORITY=/home/binam/.Xauthority
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/5 * * * * sh /home/YOURUSERNAMEHERE/crontabScripts/batteryCheck.sh
+
