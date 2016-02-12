@@ -80,3 +80,11 @@ set listchars=tab:··,trail:⌖,extends:>,precedes:<,nbsp:+
 " set listchars=tab:▸\ ,trail:·
 set spelllang=en
 set spellfile=$HOME/spell/en.utf-8.add
+
+" Abbreviations
+iab starttex \documentclass{article}<CR>\usepackage{graphicx}<CR>\usepackage{float}<CR>]usepackage{indentfirst}<CR><CR>\begin{document}<CR>\title{class - HW# - Name}<CR>\author{Binam Kayastha}<CR>\date{\today}<CR>\maketitle<CR>\end{document}
+iab s \section
+iab ss \subsection
+iab sss \subsubsection
+iab ssss \subsubsubsection
+iab tblbox \begin{center}<CR>\begin{tabular}{\|c\|}<CR>\hline<CR>data\\ <CR>\hline<CR>\end{tabular}<CR>\end{center}

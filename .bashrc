@@ -71,7 +71,7 @@ RED='\[\e[31;1m\]'
 GREEN='\[\e[32m\]'
 BLUE='\[\e[34m\]'
 RESET='\[\e[0m\]'
-PS1="┌─ ${GREEN}\t ${BLUE}\u${RESET}@${GREEN}\h ${BLUE}\w${RESET}\n└─╼ "
+PS1="┌┘ ${GREEN}\t ${BLUE}\u${RESET}@${GREEN}\h ${BLUE}\w${RESET}\n└┐ "
 #PS1='[\u@\h \W]\$ '
 
 if [ -x /usr/bin/dircolors ]; then
@@ -112,7 +112,8 @@ fi
 
 # Stuff I added  (everything above is default)
 export PATH=$HOME/bin:${PATH}
-
+export PATH=$PATH:ANDROID_HOME/tools:ANDROID_HOME/platform-tools
+ANDROID_HOME=~/Android/Sdk
 EDITOR=vim
 VISUAL=vim
 export VISUAL="vim"
@@ -131,3 +132,4 @@ man() {
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+

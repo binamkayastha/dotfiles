@@ -8,6 +8,40 @@
 :set nospell
 vim -r swpfile
 
+#Weechat
+Connections -> freenode, spotchat (/connect)
+f9-10 ->top bar scroll
+f11-12 -> naeme scroll
+pageup and page down
+Reply by typing name and :
+
+/query username, private message chat
+/close the window
+
+/join channel, channel, channel
+f5/f6 to move.
+
+Toggle between servers
+Ctrl+X
+
+Set defaults for channel
+/set irc.server.freenode.nicks "mynick, mynick2, etc"
+/set irc.server.freenode.username "Username"
+/set irc.server.freenode.realname "Realname"
+/set irc.server.freenode.autoconnect on
+
+Set nick server:
+/msg NickServ REGISTER password email@gmail.com
+/msg NickServe HIDEMAIL ON (hide email)
+Alt nick:
+/nick newNick
+/msg NickServ IDENTIFY binamkayastha password
+/msg NickServ GROUP
+
+/filter add joinquit * irc_join,irc_part,irc_quit *
+Alt+= shows/hides the thing
+
+
 #programs and things
 gpointing-device-settings
 dconf-editor
@@ -17,7 +51,6 @@ mnemosyne 		#flashcard thingy
 ps axjf 		#list processes in a tree
 transmission 	        #torrent client
 tint3		 	#like tint2 but made by tmathmeyer
-apvlv 			#pdf
 xournal 		#pdf
 rifle 			#Open respective file
 hamster			#Time Tracker
@@ -25,10 +58,16 @@ gcalcli			#Calendar helper
 cheese                  #Camera
 haguichi                #Hamachi gui
 gsimplecal              #calendar
+mirage                  #image viewer
+xdotool                 #Automation command line tool
+cmus                    #Ncurses music player
+stack                   #Some Haskall thing
+nethack                 #fun game that Khoi plays
+apropos                 #Search for man pages
 
 WHAT NEEDS TO BE DONE:
     Media Buttons
-    Compton 
+    Compton
 
 ERRORS:
 xinput --list --short
@@ -59,3 +98,6 @@ setxkbmap us
 
 Vbox modules to load
 sudo modprobe -all vboxdrv vboxnetadp vboxnetflt vboxpci
+
+
+sem_post and sem_wait
