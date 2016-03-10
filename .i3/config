@@ -2,7 +2,6 @@
 # run i3-msg restart in a terminal
 
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -23,9 +22,10 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,12 +89,12 @@ bindsym $mod+3 workspace 3: IRC
 bindsym $mod+4 workspace 4: ECE
 bindsym $mod+5 workspace 5: CS
 bindsym $mod+6 workspace 6: ArchConfig
-bindsym $mod+7 workspace 7: Media
+bindsym $mod+7 workspace 7: Social
 bindsym $mod+8 workspace 8: Project1
 bindsym $mod+9 workspace 9: Project2
-bindsym $mod+0 workspace 10: Project3
-bindsym $mod+plus workspace next
-bindsym $mod+minus workspace prev
+bindsym $mod+0 workspace 10: ACM
+bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show 
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1: Main
@@ -103,10 +103,10 @@ bindsym $mod+Shift+3 move container to workspace 3: IRC
 bindsym $mod+Shift+4 move container to workspace 4: ECE
 bindsym $mod+Shift+5 move container to workspace 5: CS
 bindsym $mod+Shift+6 move container to workspace 6: ArchConfig
-bindsym $mod+Shift+7 move container to workspace 7: Media
+bindsym $mod+Shift+7 move container to workspace 7: Social
 bindsym $mod+Shift+8 move container to workspace 8: Project1
 bindsym $mod+Shift+9 move container to workspace 9: Project2
-bindsym $mod+Shift+0 move container to workspace 10: Project3
+bindsym $mod+Shift+0 move container to workspace 10: ACM
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -159,10 +159,10 @@ mode "Program" {
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id lock.sh, mode "default"
+    bindsym l exec --no-startup-id robolock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id lock.sh && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id lock.sh && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id robolock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id robolock && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id gksudo poweroff, mode "default"
 
@@ -178,8 +178,9 @@ bindsym $mod+Pause mode "$mode_system"
 bar {
         #status_command 	python ~/.i3/.i3pystatusconfigbottom #i3status
  	#status_command		python ~/.i3/.i3pystatusconfigtop
-        status_command		~/.i3/conky-i3bar
-	position		bottom	
+        #status_command		~/.i3/conky-i3bar
+        status_command          i3blocks
+	position		bottom
 	workspace_buttons 	yes
 	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
         font pango:DejaVu Sans Mono 12
@@ -208,7 +209,7 @@ new_window pixel 0
 # client.unfocused        #333333 #222222 #888888 #292d2e
 # client.urgent           #2f343a #900000 #ffffff #900000
 # client.placeholder      #000000 #0c0c0c #ffffff #000000
-#
+
 client.focused          #4c7899 #000000 #ffffff #484e50
 client.focused_inactive #333333 #000000 #ffffff #000000
 client.unfocused        #333333 #000000 #888888 #000000
@@ -222,12 +223,14 @@ bindsym Mod1+Control+Down exec xrandr -o inverted
 bindsym Mod1+Control+Left exec xrandr -o left
 bindsym Mod1+Control+Right exec xrandr -o right
 
-
 # Multimedia Keys
 # ALSA Mixer controls
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && killall -USR1 conky #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- #decrease sound volume
-bindsym XF86AudioMute exec amixer -D pulse sset Master toggle       # mute sound
+# bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && killall -USR1 conky #increase sound volume, and update conky
+
+#change sound volume, and update i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle && exec pkill -RTMIN+10 i3blocks
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5.0 # increase screen brightness
@@ -253,25 +256,30 @@ bindsym $mod+XF86AudioRaiseVolume exec playerctl next
 bindsym $mod+Shift+b exec --no-startup-id ~/crontabScripts/batteryNotif.sh
 
 # Mouse click
-bindsym Mod1+1 exec --no-startup-id xdotool click 1
-bindsym Mod1+2 exec --no-startup-id xdotool click 3
-bindsym Mod1+3 exec --no-startup-id xdotool mousedown 1
-bindsym Mod1+4 exec --no-startup-id xdotool mouseup 1
+bindsym Alt_R+1 exec --no-startup-id xdotool click 1
+bindsym Alt_R+2 exec --no-startup-id xdotool click 3
+bindsym Alt_R+3 exec --no-startup-id xdotool mousedown 1
+bindsym Alt_R+4 exec --no-startup-id xdotool mouseup 1
+
+#bindsym Shift+space exec --no-startup-id xdotool key underscore
 
 
 # Assign programs to workspaces. This should really be done in the beginning.
-assign [class="Skype"] → 10: Social
-assign [class="Spotify"] →  7: Media
+assign [class="Skype"] → 7: Social
+assign [class="Spotify"] →  7: Social
 # class instance window_role con_id id con_mark title urgent
 
 #Things to execute in the beginning
-exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
+exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
 #exec sudo mount /dev/sda6 /mnt/WPI        #Mount my WPI drive
 #exec sudo mount /dev/sda5 /mnt/C
 exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25
-#exec --no-startup-id wicd
-#exec --no-startup-id wicd-gtk -t
 #exec --no-startup-id touchegg
-exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
+#exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
+exec --no-startup-id xrandr --dpi 192
+exec --no-startup-id xrdb .Xresources
+
 exec --no-startup-id dunst
-#exec sudo wpa_supplicant -c wpi_wireless.config -i wlp1s0 (Has to be in CA folder)
+exec --no-startup-id nm-applet
+exec --no-startup-id i3-msg restart
+

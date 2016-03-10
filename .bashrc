@@ -111,6 +111,8 @@ if ! shopt -oq posix; then
 fi
 
 # Stuff I added  (everything above is default)
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
 export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:ANDROID_HOME/tools:ANDROID_HOME/platform-tools
 ANDROID_HOME=~/Android/Sdk
