@@ -1,103 +1,110 @@
 #vim things
-:s/Search/Replace/CommandFlag                    vim replace
-:s/Search-Word/replace-Word/g    #Replace in current line only    vim replace
-:%s/Sea    rch-Word/Replace-Word/g    #Replace in every occurence    vim replace
-:%s/Search-Word/Replace-Word/gc    #c adds asking for conformation    vim replace
-:%s/Search-Word/Replace-Word/gi    #i case insensetive         vim replace
-:set spell spelllang=en_us
-:set nospell
-vim -r swpfile
+    :s/Search/Replace/CommandFlag
+    :s/Search-Word/replace-Word/g    #Replace in current line only
+    :%s/Sea    rch-Word/Replace-Word/g    #Replace in every occurence
+    :%s/Search-Word/Replace-Word/gc    #c adds asking for conformation
+    :%s/Search-Word/Replace-Word/gi    #i case insensetive
+    :set spell spelllang=en_us
+    :set nospell
+    ]s next incorrect word
+    zg add as a good word
+    zw remove from good word 
+    z= see list of options
+    vim -r swpfile
+    vim -p multiple tabs open files
 
 #Weechat
-Connections -> freenode, spotchat (/connect)
-f9-10 ->top bar scroll
-f11-12 -> naeme scroll
-pageup and page down
-Reply by typing name and :
+    Connections -> freenode, spotchat (/connect)
+    f9-10 ->top bar scroll
+    f11-12 -> naeme scroll
+    pageup and page down
+    Reply by typing name and :
 
-/query username, private message chat
-/close the window
+    /query username, private message chat
+    /close the window
 
-/join channel, channel, channel
-f5/f6 to move.
+    /join channel, channel, channel
+    f5/f6 to move.
 
-Toggle between servers
-Ctrl+X
+    Toggle between servers
+    Ctrl+X
 
-Set defaults for channel
-/set irc.server.freenode.nicks "mynick, mynick2, etc"
-/set irc.server.freenode.username "Username"
-/set irc.server.freenode.realname "Realname"
-/set irc.server.freenode.autoconnect on
+    Set defaults for channel
+    /set irc.server.freenode.nicks "mynick, mynick2, etc"
+    /set irc.server.freenode.username "Username"
+    /set irc.server.freenode.realname "Realname"
+    /set irc.server.freenode.autoconnect on
 
-Set nick server:
-/msg NickServ REGISTER password email@gmail.com
-/msg NickServe HIDEMAIL ON (hide email)
-Alt nick:
-/nick newNick
-/msg NickServ IDENTIFY binamkayastha password
-/msg NickServ GROUP
+    Set nick server:
+    /msg NickServ REGISTER password email@gmail.com
+    /msg NickServe HIDEMAIL ON (hide email)
+    Alt nick:
+    /nick newNick
+    /msg NickServ IDENTIFY binamkayastha password
+    /msg NickServ GROUP
 
-/filter add joinquit * irc_join,irc_part,irc_quit *
-Alt+= shows/hides the thing
+    /filter add joinquit * irc_join,irc_part,irc_quit *
+    Alt+= shows/hides the thing
 
 
 #programs and things
-gpointing-device-settings
-dconf-editor
-xev    			#keypress codes
-xprop | grep CLASS | less  #find class of program
-mnemosyne 		#flashcard thingy
-ps axjf 		#list processes in a tree
-transmission 	        #torrent client
-tint3		 	#like tint2 but made by tmathmeyer
-xournal 		#pdf
-rifle 			#Open respective file
-hamster			#Time Tracker
-gcalcli			#Calendar helper
-cheese                  #Camera
-haguichi                #Hamachi gui
-gsimplecal              #calendar
-mirage                  #image viewer
-xdotool                 #Automation command line tool
-cmus                    #Ncurses music player
-stack                   #Some Haskall thing
-nethack                 #fun game that Khoi plays
-apropos                 #Search for man pages
+    gpointing-device-settings
+    dconf-editor
+    xev                     #keypress codes
+    xprop | grep CLASS| cat #find class of program
+    mnemosyne               #flashcard thingy
+    ps axjf                 #list processes in a tree
+    transmission            #torrent client
+    xournal                 #PDF annotator
+    rifle                   #Open respective file
+    hamster                 #Time Tracker
+    cheese                  #Camera
+    haguichi                #Hamachi gui
+    gsimplecal              #Calendar GUI
+    mirage                  #Image viewer GUI
+    xdotool                 #Automation command line tool
+    cmus                    #Ncurses music player
+    stack                   #Some Haskall thing
+    nethack                 #fun game that Khoi plays
+    apropos                 #Search for man pages
+    solaar                  #For unifying usb
+    xrdb .Xresources        #Refreshes urxvt
+    learnyounode            #Teaches node
+    shutter                 #Let's you take screenshots of specific 
+                                areas/windows
+SCREEN RESOLUTION FIX INFO:
+    xdpyinfo | grep -B2 resolution
 
-WHAT NEEDS TO BE DONE:
-    Media Buttons
-    Compton
+    The DPI for 3200x1800 resolution is 96x96
+    xrandr --dpi 144
+    25% - 120
+    50% - 144
+    75% - 168
+    100% - 192
 
 ERRORS:
-xinput --list --short
-//find synaptics
-xinput --list-props (id synaptics)
-xinput --set-prop (id synaptic) (id device property) (value)
+    xinput --list --short
+    //find synaptics
+    xinput --list-props (id synaptics)
+    xinput --set-prop (id synaptic) (id device property) (value)
 
 RANDOM INFO
-compgen -c #list programs
-alsactl restore #fixes sound
-sudo wpa_supplicant -B -c wpi_wireless.conf -i wlp1s0
-sudo dhcpcd wlp1s0
-sudo systemctl start NetworkManager
-/usr/local/sbin/rc.local
+    compgen -c #list programs
+    alsactl restore #fixes sound
+    /usr/local/sbin/rc.local
 
-nm-connection-editor GUI
-xmodmap -pke | less
+    nm-connection-editor GUI
+    xmodmap -pke | less
 
+    xmodmap
+    /etc/X11/xorg.conf.d/
 
-learnyounode
-shutter
-xmodmap
-/etc/X11/xorg.conf.d/
-
-setxkbmap dvorak
-setxkbmap us
+    setxkbmap dvorak
+    setxkbmap us
 
 
-Vbox modules to load
-sudo modprobe -all vboxdrv vboxnetadp vboxnetflt vboxpci
+    Vbox modules to load
+    sudo modprobe -all vboxdrv vboxnetadp vboxnetflt vboxpci
 
+    df -h
 
-sem_post and sem_wait
