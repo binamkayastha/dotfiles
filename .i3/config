@@ -218,10 +218,10 @@ client.placeholder      #000000 #000000 #ffffff #000000
 
 bindsym $mod+Shift+d exec setxkbmap dvorak
 bindsym $mod+Shift+o exec setxkbmap us
-bindsym Mod1+Control+Up exec xrandr -o normal
-bindsym Mod1+Control+Down exec xrandr -o inverted
-bindsym Mod1+Control+Left exec xrandr -o left
-bindsym Mod1+Control+Right exec xrandr -o right
+bindsym Mod1+Control+Up     exec --no-startup-id turnUp.sh
+bindsym Mod1+Control+Down   exec --no-startup-id turnDown.sh
+bindsym Mod1+Control+Left   exec --no-startup-id turnLeft.sh
+bindsym Mod1+Control+Right  exec --no-startup-id turnRight.sh
 
 # Multimedia Keys
 # ALSA Mixer controls
