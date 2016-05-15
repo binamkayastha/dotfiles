@@ -16,7 +16,7 @@ scripts/screen_orientation/turnUp.sh -> bin/turnUp.sh
 [[i3]]
 i3/config -> .i3/config
 i3/conky-i3bar -> .i3/conky-i3bar
-i3/conkyrc -> .i3/.conkyrc
+i3/i3conkyrc -> .i3/.i3conkyrc
 i3/i3blocks.conf -> .i3blocks.conf
 i3/i3pystatusconfig -> .i3/.i3pystatusconfig
 i3/i3pystatusconfigbottom -> .i3/.i3pystatusconfigbottom
