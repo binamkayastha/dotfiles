@@ -25,7 +25,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -85,27 +86,27 @@ bindsym $mod+a focus parent
 # switch to workspace
 bindsym $mod+1 workspace 1: Main
 bindsym $mod+2 workspace 2: Junk
-bindsym $mod+3 workspace 3: IRC
-bindsym $mod+4 workspace 4: ECE
-bindsym $mod+5 workspace 5: CS
-bindsym $mod+6 workspace 6: ArchConfig
-bindsym $mod+7 workspace 7: Social
-bindsym $mod+8 workspace 8: Project1
-bindsym $mod+9 workspace 9: Project2
+bindsym $mod+3 workspace 3: ECE
+bindsym $mod+4 workspace 4: CS
+bindsym $mod+5 workspace 5: CS2
+bindsym $mod+6 workspace 6: Social
+bindsym $mod+7 workspace 7: Project1
+bindsym $mod+8 workspace 8: Project2
+bindsym $mod+9 workspace 9: ID2050
 bindsym $mod+0 workspace 10: ACM
 bindsym $mod+minus move scratchpad
-bindsym $mod+plus scratchpad show 
+bindsym $mod+plus scratchpad show
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1: Main
 bindsym $mod+Shift+2 move container to workspace 2: Junk
-bindsym $mod+Shift+3 move container to workspace 3: IRC
-bindsym $mod+Shift+4 move container to workspace 4: ECE
-bindsym $mod+Shift+5 move container to workspace 5: CS
-bindsym $mod+Shift+6 move container to workspace 6: ArchConfig
-bindsym $mod+Shift+7 move container to workspace 7: Social
-bindsym $mod+Shift+8 move container to workspace 8: Project1
-bindsym $mod+Shift+9 move container to workspace 9: Project2
+bindsym $mod+Shift+3 move container to workspace 3: ECE
+bindsym $mod+Shift+4 move container to workspace 4: CS
+bindsym $mod+Shift+5 move container to workspace 5: CS2
+bindsym $mod+Shift+6 move container to workspace 6: Social
+bindsym $mod+Shift+7 move container to workspace 7: Project1
+bindsym $mod+Shift+8 move container to workspace 8: Project2
+bindsym $mod+Shift+9 move container to workspace 9: ID2050
 bindsym $mod+Shift+0 move container to workspace 10: ACM
 
 # reload the configuration file
@@ -256,10 +257,10 @@ bindsym $mod+XF86AudioRaiseVolume exec playerctl next
 bindsym $mod+Shift+b exec --no-startup-id ~/crontabScripts/batteryNotif.sh
 
 # Mouse click
-bindsym Alt_R+1 exec --no-startup-id xdotool click 1
-bindsym Alt_R+2 exec --no-startup-id xdotool click 3
-bindsym Alt_R+3 exec --no-startup-id xdotool mousedown 1
-bindsym Alt_R+4 exec --no-startup-id xdotool mouseup 1
+bindsym Mod1+1 exec --no-startup-id xdotool click 1
+bindsym Mod1+2 exec --no-startup-id xdotool click 3
+bindsym Mod1+3 exec --no-startup-id xdotool mousedown 1
+bindsym Mod1+4 exec --no-startup-id xdotool mouseup 1
 
 #bindsym Shift+space exec --no-startup-id xdotool key underscore
 
@@ -275,6 +276,9 @@ exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.J
 #exec sudo mount /dev/sda5 /mnt/C
 exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25
 #exec --no-startup-id touchegg
+#
+bindsym $mod+g exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
+bindsym $mod+i exec --no-startup-id xrandr --output eDP1 --mode 3200x1800 #Change to higher screen resolution
 #exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
 exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id xrdb .Xresources

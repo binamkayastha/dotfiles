@@ -43,6 +43,8 @@
     /msg NickServ IDENTIFY binamkayastha password
     /msg NickServ GROUP
 
+    /set irc.look.smart_filter on
+    /filter add irc_smart * irc_smart_filter *
     /filter add joinquit * irc_join,irc_part,irc_quit *
     Alt+= shows/hides the thing
 
@@ -57,7 +59,6 @@
     transmission            #torrent client
     xournal                 #PDF annotator
     rifle                   #Open respective file
-    hamster                 #Time Tracker
     cheese                  #Camera
     haguichi                #Hamachi gui
     gsimplecal              #Calendar GUI
@@ -72,6 +73,11 @@
     learnyounode            #Teaches node
     shutter                 #Let's you take screenshots of specific 
                                 areas/windows
+    surf                    #A lightweight browser
+    pkgfile                 #Tells you about where the package is
+    playonlinux		    #Payonlinux
+    pinta                   #Inspired by Paint.NET
+
 SCREEN RESOLUTION FIX INFO:
     xdpyinfo | grep -B2 resolution
 
@@ -96,15 +102,16 @@ RANDOM INFO
     nm-connection-editor GUI
     xmodmap -pke | less
 
+    sudo mount -t cifs //storage.wpi.edu/software /mnt/software -o
+user=bkayastha
+
     xmodmap
     /etc/X11/xorg.conf.d/
 
     setxkbmap dvorak
     setxkbmap us
 
-
     Vbox modules to load
     sudo modprobe -all vboxdrv vboxnetadp vboxnetflt vboxpci
 
     df -h
-

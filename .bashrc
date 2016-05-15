@@ -115,6 +115,7 @@ export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
 export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:ANDROID_HOME/tools:ANDROID_HOME/platform-tools
+export XDG_CONFIG_HOME="$HOME/.config"
 ANDROID_HOME=~/Android/Sdk
 EDITOR=vim
 VISUAL=vim

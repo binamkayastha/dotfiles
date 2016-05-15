@@ -91,6 +91,7 @@ iab tblbox \begin{center}<CR>\begin{tabular}{\|c\|}<CR>\hline<CR>data\\ <CR>\hli
 iab ind \indent
 iab b \begin
 iab e \end
+iab v verbatim
 iab bulpoint \begin{itemize}<CR>\end{itemize}
 iab numpoint \beign{enumerate}<CR>\end{enumerate}
 
