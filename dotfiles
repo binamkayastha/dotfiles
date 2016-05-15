@@ -1,0 +1,24 @@
+[[vim]]
+vim/vimrc -> .vimrc
+
+[[bash]]
+bash/bashrc -> .bashrc
+bash/bash_aliases -> .bash_aliases
+
+[[scripts]]
+scripts/battery/batteryNotif.sh -> crontabScripts/batteryNotif.sh
+scripts/battery/batteryCheck.sh -> crontabScripts/batteryCheck.sh
+scripts/screen_orientation/turnDown.sh -> bin/turnDown.sh
+scripts/screen_orientation/turnLeft.sh -> bin/turnLeft.sh
+scripts/screen_orientation/turnRight.sh -> bin/turnRight.sh
+scripts/screen_orientation/turnUp.sh -> bin/turnUp.sh
+
+[[i3]]
+i3/config -> .i3/config
+i3/conky-i3bar -> .i3/conky-i3bar
+i3/conkyrc -> .i3/.conkyrc
+i3/i3blocks.conf -> .i3blocks.conf
+i3/i3pystatusconfig -> .i3/.i3pystatusconfig
+i3/i3pystatusconfigbottom -> .i3/.i3pystatusconfigbottom
+i3/i3pystatusconfigtop -> .i3/.i3pystatusconfigtop
+
