@@ -1,0 +1,9 @@
+[user]
+	name = binamkayastha
+	email = binamkayastha@gmail.com
+[core]
+	autocrlf = input
+[alias]
+	l = log --graph --oneline --decorate
+	ll = log --graph --oneline --decorate --branches --tags
+	lll = log --graph --oneline --decorate --all

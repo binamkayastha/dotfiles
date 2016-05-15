@@ -1,0 +1,62 @@
+[[bar]]
+  fontcolor #ffffff
+  fontname Eurofurence pango:DejaVu Sans Mono
+  background #000000
+  borderwidth 0
+  margin 0
+  padding 0
+  location bottom
+  left
+    desktops
+  right
+    batterytext
+    battery
+    volumetext
+    volume
+    date
+    time
+    space
+
+[desktops]
+  id workspace
+  format %N
+  active:background #2002
+
+[date]
+  id clock
+  timeout 100
+  format %a - %d
+
+[time]
+  id clock
+  timeout 1
+  format %I : %M : %S %p
+
+[batterytext]
+  id text
+  source BAT:
+
+[battery]
+  id scale
+  source battery BAT1
+  high_font #00FF00
+  med_font #FFFF00
+  low_font #0000FF
+  low_color #FF0000
+
+[volumetext]
+  id text
+  source VOL:
+
+[volume]
+  id scale
+  source alsa 0 Master
+  shell amixer set Master toggle
+
+[tray]
+  id shell
+  source stalonetray
+
+[space]
+  id text
+  source   
