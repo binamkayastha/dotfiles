@@ -1,6 +1,5 @@
-export _JAVA_AWT_WM_NONREPARTENTING=1
 sxhkd &
-feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG &
+feh --bg-scale /WPI/Pictures/backgroundpics/Dragon.JPG &
 compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25 &
 
 xrandr --dpi 192 &
