@@ -114,9 +114,9 @@ set spellfile=$HOME/spell/en.utf-8.add
 :autocmd FileType tex :inoremap fracb \(\frac{}{}\)<esc>hhhhi
 :autocmd FileType tex :inoremap theta \theta
 :autocmd FileType tex :inoremap thetab \(\theta\)
-:autocmd FileType tex :inoremap sub _{}<esc>i
-:autocmd FileType tex :inoremap sup ^{}<esc>i
-:autocmd FileType tex :inoremap func \(\)<esc>hi
+:autocmd FileType tex :inoremap fsub _{}<esc>i
+:autocmd FileType tex :inoremap fsup ^{}<esc>i
+:autocmd FileType tex :inoremap funck \(\)<esc>hi
 :autocmd FileType tex :inoremap funcline \[\]<esc>hi
 :autocmd FileType tex :inoremap bold \textbf{}<esc>i
 
