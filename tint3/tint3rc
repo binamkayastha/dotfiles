@@ -53,10 +53,7 @@
   source alsa 0 Master
   shell amixer set Master toggle
 
-[tray]
-  id shell
-  source stalonetray
-
 [space]
   id text
-  source   
+  source        
+
