@@ -26,6 +26,7 @@
   id clock
   timeout 100
   format %a - %d
+  shell gsimplecal
 
 [time]
   id clock
@@ -43,6 +44,7 @@
   med_font #FFFF00
   low_font #0000FF
   low_color #FF0000
+  shell ~/crontabScripts/batteryNotif.sh
 
 [volumetext]
   id text
