@@ -6,7 +6,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
+font pango:Monofur 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -25,8 +26,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -184,7 +185,7 @@ bar {
 	position		bottom
 	workspace_buttons 	yes
 	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:DejaVu Sans Mono 12
+        font pango:Monofur 12
 	separator_symbol	"|"
 }
 
@@ -228,10 +229,10 @@ bindsym Mod1+Control+Right  exec --no-startup-id turnRight.sh
 # ALSA Mixer controls
 # bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && killall -USR1 conky #increase sound volume, and update conky
 
-#change sound volume, and update i3blocks
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && exec pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && exec pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -D pulse sset Master toggle && exec pkill -RTMIN+10 i3blocks
+#change sound volume, and update i3blocks:
+bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+ && exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer sset Master 1%- && exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer sset Master toggle && amixer sset Headphone unmute && amixer sset Speaker unmute && exec pkill -RTMIN+10 i3blocks
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5.0 # increase screen brightness
@@ -266,24 +267,12 @@ bindsym Mod1+4 exec --no-startup-id xdotool mouseup 1
 
 
 # Assign programs to workspaces. This should really be done in the beginning.
-assign [class="Skype"] → 7: Social
-assign [class="Spotify"] →  7: Social
+#assign [class="Skype"] → 7: Social
 # class instance window_role con_id id con_mark title urgent
 
 #Things to execute in the beginning
-exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
+#exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
 #exec sudo mount /dev/sda6 /mnt/WPI        #Mount my WPI drive
 #exec sudo mount /dev/sda5 /mnt/C
-exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25
+#exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25
 #exec --no-startup-id touchegg
-#
-bindsym $mod+g exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
-bindsym $mod+i exec --no-startup-id xrandr --output eDP1 --mode 3200x1800 #Change to higher screen resolution
-#exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 #Change to lower screen resolution
-exec --no-startup-id xrandr --dpi 192
-exec --no-startup-id xrdb .Xresources
-
-exec --no-startup-id dunst
-exec --no-startup-id nm-applet
-exec --no-startup-id i3-msg restart
-

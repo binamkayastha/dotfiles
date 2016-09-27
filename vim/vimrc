@@ -82,7 +82,6 @@ set spelllang=en
 set spellfile=$HOME/spell/en.utf-8.add
 
 :inoremap jk <esc>
-:inoremap lll <esc>lli
 
 " Autocommands
 " " Turns of wrapping in html files

@@ -1,4 +1,4 @@
-  Xft.dpi: 192
+  Xft.dpi: 96
   Xft.autohint: 0
   Xft.lcdfilter:  lcddefault
   Xft.hintstyle:  hintfull
@@ -28,7 +28,7 @@
 ! URxvt*inheritPixmap:                  boolean
 ! URxvt*transparent:                    boolean
 ! URxvt*tintColor:                      color
-   URxvt*shading:                       35
+! URxvt*shading:                       35
 ! URxvt*blurRadius:                     HxW
 ! URxvt*fading:                         number
 ! URxvt*fadeColor:                      color
@@ -43,7 +43,7 @@
 ! URxvt*cursorUnderline:                boolean
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
-  URxvt*background:                     rgba:0000/0000/0200/c800
+  URxvt*background:                     rgba:0000/0000/0200/8000
   URxvt*foreground:                     #cccccc
 ! URxvt*color0:                         color
 ! URxvt*color1:                         color
@@ -76,7 +76,7 @@ URxvt*color4:                           CornflowerBlue
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-  URxvt*.font:  xft:Monofur:Regular:size=16
+  URxvt*.font:  xft:Monofur:Regular:size=12
 ! URxvt*boldFont:                       fontname
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
@@ -89,7 +89,7 @@ URxvt*color4:                           CornflowerBlue
 ! URxvt*iconName:                       string
 ! URxvt*saveLines:                      number
 ! URxvt*buffered:                       boolean
-  URxvt*depth:                          10
+  URxvt*depth:                          32
 ! URxvt*visual:                         number
 ! URxvt*transient-for:                  windowid
 ! URxvt*override-redirect:              boolean
