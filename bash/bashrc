@@ -67,11 +67,14 @@ export PROMPT_DIRTRIM=3
 #export PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")'
 #export PS1='\u@\h ${PS1X} $ '
 
+BOLD='\E[1m'
 RED='\[\e[31;1m\]'
 GREEN='\[\e[32m\]'
 BLUE='\[\e[34m\]'
 RESET='\[\e[0m\]'
-PS1="${GREEN}\t ${BLUE}\u${RESET}@${GREEN}\h ${BLUE}\w${RESET}\n "
+#PS1="${GREEN}\t ${BLUE}\u${RESET}@${GREEN}\h ${BLUE}\w${RESET}\n "
+PS1="${GREEN}\t \[\e[1;91m\]${BLUE}\u${RESET}@\[\e[1;91m\]${GREEN}\h ${BLUE}\w${RESET}\n "
+#PS1='\[\e[1;91m\]${GREEN}\t ${BLUE}\u${RESET}@${GREEN}\h ${BLUE}\w${RESET}\n\$\[\e[0m\] '
 #PS1='[\u@\h \W]\$ '
 
 if [ -x /usr/bin/dircolors ]; then
