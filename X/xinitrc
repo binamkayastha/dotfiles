@@ -5,14 +5,13 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-ssh-agent &
-eval $(ssh-agent) &
 
-feh --bg-fill ~/Images/table.jpg &
-
-compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25 &
+compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.10 &
+redshift-gtk &
 
 xrdb .Xresources &
+
+tilda &
 
 ssh-agent bash && ssh-add ~/.ssh/id_rsa &
 
