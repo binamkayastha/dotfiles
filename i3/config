@@ -6,28 +6,17 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 8
-font pango:Monofur 12
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+#font pango:DejaVu Sans Mono 8
+#font pango:monospace 8
+#font pango:Monofur 12
+font pango:inconsolata 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
-#bindsym $mod+Return exec terminator
+bindsym $mod+Return exec evilvte
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -35,28 +24,18 @@ bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+l focus left
+bindsym $mod+semicolon focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# Mod1ernatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+l move left
+bindsym $mod+Shift+semicolon move right
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -78,81 +57,113 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+a mode "Focus"
+# a mode to focus parent and child
+mode "Focus" {
+    # focus the parent container
+    bindsym $mod+p focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+    # focus the child container
+    bindsym $mod+c focus child
 
-# switch to workspace
-bindsym $mod+1 workspace 1: Main
-bindsym $mod+2 workspace 2: Junk
-bindsym $mod+3 workspace 3: ECE
-bindsym $mod+4 workspace 4: CS
-bindsym $mod+5 workspace 5: CS2
-bindsym $mod+6 workspace 6: Social
-bindsym $mod+7 workspace 7: Project1
-bindsym $mod+8 workspace 8: Project2
-bindsym $mod+9 workspace 9: ID2050
-bindsym $mod+0 workspace 10: ACM
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Main
+set $ws1 "1:"
+# Code
+set $ws2 "2:"
+# Read/Research
+set $ws3 "3:"
+# Testing
+set $ws4 "4:"
+# 
+set $ws5 "5:☯"
+# 
+set $ws6 "6:⚔"
+# Security
+set $ws7 "7:"
+# 
+set $ws8 "8:☭"
+# 
+set $ws9 "9:♜"
+# 
+set $ws10 "10:⚒"
+
+set $sk [class="Skype"] move workspace
+
+# switch to workspace, move skype with it
+bindsym $mod+1 workspace $ws1; $sk $ws1
+bindsym $mod+2 workspace $ws2; $sk $ws2
+bindsym $mod+3 workspace $ws3; $sk $ws3
+bindsym $mod+4 workspace $ws4; $sk $ws4
+bindsym $mod+5 workspace $ws5; $sk $ws5
+bindsym $mod+6 workspace $ws6; $sk $ws6
+bindsym $mod+7 workspace $ws7; $sk $ws7
+bindsym $mod+8 workspace $ws8; $sk $ws8
+bindsym $mod+9 workspace $ws9; $sk $ws9
+bindsym $mod+0 $sk $ws10; workspace $ws10
+bindsym Control+l workspace prev
+bindsym Control+semicolon workspace next
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym Control+Shift+l move container to workspace prev
+bindsym Control+Shift+semicolon move container to workspace next
+
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1: Main
-bindsym $mod+Shift+2 move container to workspace 2: Junk
-bindsym $mod+Shift+3 move container to workspace 3: ECE
-bindsym $mod+Shift+4 move container to workspace 4: CS
-bindsym $mod+Shift+5 move container to workspace 5: CS2
-bindsym $mod+Shift+6 move container to workspace 6: Social
-bindsym $mod+Shift+7 move container to workspace 7: Project1
-bindsym $mod+Shift+8 move container to workspace 8: Project2
-bindsym $mod+Shift+9 move container to workspace 9: ID2050
-bindsym $mod+Shift+0 move container to workspace 10: ACM
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3 inplace (preserves your layout/session)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Muahahahaha. Wrong shortcut, you have to use your mouse now.' -b 'Kill Kill KillRR 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "Resize"
+# resize window (you can also use the mouse like a pleb)
 mode "Resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize shrink width 1 px or 1 ppt
+        bindsym semicolon resize grow width 1 px or 1 ppt
+        bindsym Shift+j resize grow height 10 px or 10 ppt
+        bindsym Shift+k resize shrink height 10 px or 10 ppt
+        bindsym Shift+l resize shrink width 10 px or 10 ppt
+        bindsym Shift+semicolon resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "Resize"
-
 bindsym $mod+p mode "Program"
-
 # a mode to open different types of programs
 mode "Program" {
     bindsym $mod+f exec firefox; mode "default"
-    bindsym $mod+c exec chromium; mode "default"
-    bindsym $mod+l exec libreoffice; mode "default"
-    bindsym $mod+n exec nautilus; mode "default"
+    bindsym $mod+c exec google-chrome-stable; mode "default"
+    bindsym $mod+l exec i3lock -f -c 222222; mode "default"
+    bindsym $mod+n exec thunar; mode "default"
     bindsym $mod+s exec skype; mode "default"
-    bindsym $mod+t exec tomate; mode "default"
+    bindsym $mod+p exec pomello; mode "default"
+    bindsym $mod+i exec google-chrome-stable https://inbox.google.com; mode "default"
+    bindsym $mod+t exec google-chrome-stable https://trello.com; mode "default"
     bindsym $mod+h exec firefox https://habitica.com/#/tasks; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -161,10 +172,10 @@ mode "Program" {
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id robolock, mode "default"
+    bindsym l exec --no-startup-id i3lock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id robolock && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id robolock && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id i3lock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id i3lock && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id gksudo poweroff, mode "default"
 
@@ -172,39 +183,33 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-   
+
 bindsym $mod+Pause mode "$mode_system"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #status_command 	python ~/.i3/.i3pystatusconfigbottom #i3status
- 	#status_command		python ~/.i3/.i3pystatusconfigtop
-        #status_command		~/.i3/conky-i3bar
-        status_command          i3blocks
-	position		bottom
-	workspace_buttons 	yes
-	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:Monofur 12
-	separator_symbol	"|"
+    status_command          i3blocks
+    position                top
+    workspace_buttons       yes
+    strip_workspace_numbers yes
+    #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+    #font pango:Monofur 14
+    font pango:deccurs 9
+
+    separator_symbol        "||"
+    tray_output eDP1
+
+    colors {
+        background #222222
+        focused_workspace #aaaaaa #555555 #ffffff
+    }
 }
 
-#bar {
-#        status_command 		python ~/.i3/.i3pystatusconfigtop #i3status
-#        #status_command		$HOME/.i3/.conkey-i3bar
-#	position		top	
-#	workspace_buttons 	no
-#	tray_output		none
-#	binding_mode_indicator 	no
-#	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#        font pango:DejaVu Sans Mono 12
-#	mode 			invisible
-#	hidden_state		hide
-#}
 
 # My other commands
 focus_follows_mouse no #Do not follow focus of the mouse.
-new_window pixel 0
+new_window pixel 2
 # class			border backgr. text    indicator
 # client.focused          #4c7899 #285577 #ffffff #2e9ef4
 # client.focused_inactive #333333 #5f676a #ffffff #484e50
@@ -212,14 +217,17 @@ new_window pixel 0
 # client.urgent           #2f343a #900000 #ffffff #900000
 # client.placeholder      #000000 #0c0c0c #ffffff #000000
 
-client.focused          #4c7899 #000000 #ffffff #484e50
-client.focused_inactive #333333 #000000 #ffffff #000000
-client.unfocused        #333333 #000000 #888888 #000000
-client.urgent           #2f343a #000000 #ffffff #000000
-client.placeholder      #000000 #000000 #ffffff #000000
+client.focused            #4c7899 #aaaaaa #ffffff #aaaaaa
+client.focused_inactive   #333333 #222222 #ffffff #222222
+client.unfocused          #333333 #222222 #888888 #222222
+client.urgent             #2f343a #000000 #ffffff #000000
+client.placeholder        #000000 #000000 #ffffff #000000
 
+# Changing keybaord layouts
 bindsym $mod+Shift+d exec setxkbmap dvorak
 bindsym $mod+Shift+o exec setxkbmap us
+
+# Turning Screen
 bindsym Mod1+Control+Up     exec --no-startup-id turnUp.sh
 bindsym Mod1+Control+Down   exec --no-startup-id turnDown.sh
 bindsym Mod1+Control+Left   exec --no-startup-id turnLeft.sh
@@ -229,50 +237,41 @@ bindsym Mod1+Control+Right  exec --no-startup-id turnRight.sh
 # ALSA Mixer controls
 # bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && killall -USR1 conky #increase sound volume, and update conky
 
-#change sound volume, and update i3blocks:
+# Change sound volume, and update i3blocks:
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+ && exec pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%- && exec pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer sset Master toggle && amixer sset Headphone unmute && amixer sset Speaker unmute && exec pkill -RTMIN+10 i3blocks
+# Amazing hack to allow mute to work without pulse audio
+bindsym XF86AudioMute exec amixer sset Master toggle && exec pkill -RTMIN+10 i3blocks && amixer sset Headphone unmute && amixer sset Speaker unmute
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5.0 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5.0  # decrease screen brightness
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 5.0 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5.0  # decrease screen brightness
 
 #Print screen and save to ~/screenshots/ folder through scrot
 bindsym Print exec scrot -e 'mv $f ~/screenshots/'
-#bindsym $mod+Print exec scrot -s -e 'mv $f ~/screenshots'
-
-# Touchpad controls
-#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad. Need to figure out what somepath is.
+bindsym $mod+Print exec scrot -s -e 'mv $f ~/screenshots'
 
 # Media player controls
-#bindsym grave+XF86AudioMute exec playerctl play-pause
-#bindsym grave+XF86AudioLowerVolume exec playerctl previous
-#bindsym grave+XF86AudioRaiseVolume exec playerctl next 
+bindsym $mod+XF86AudioMute exec playerctl play-pause && exec pkill -RTMIN+12 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec playerctl previous && exec pkill -RTMIN+12 i3blocks
+bindsym $mod+XF86AudioRaiseVolume exec playerctl next && exec pkill -RTMIN+12 i3blocks
 
-bindsym $mod+XF86AudioMute exec playerctl play-pause
-bindsym $mod+XF86AudioLowerVolume exec playerctl previous
-bindsym $mod+XF86AudioRaiseVolume exec playerctl next
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl prev
+
+# Caps lock kill signal for i3blocks
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # Show battery information by running script
 bindsym $mod+Shift+b exec --no-startup-id ~/crontabScripts/batteryNotif.sh
 
-# Mouse click
-bindsym Mod1+1 exec --no-startup-id xdotool click 1
-bindsym Mod1+2 exec --no-startup-id xdotool click 3
-bindsym Mod1+3 exec --no-startup-id xdotool mousedown 1
-bindsym Mod1+4 exec --no-startup-id xdotool mouseup 1
+for_window [class=".*"] split toggle #toggles split at each new window
 
-#bindsym Shift+space exec --no-startup-id xdotool key underscore
-
-
-# Assign programs to workspaces. This should really be done in the beginning.
-#assign [class="Skype"] → 7: Social
-# class instance window_role con_id id con_mark title urgent
-
-#Things to execute in the beginning
-#exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
-#exec sudo mount /dev/sda6 /mnt/WPI        #Mount my WPI drive
-#exec sudo mount /dev/sda5 /mnt/C
-#exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.25
-#exec --no-startup-id touchegg
+# Things to execute when i3 starts
+# exec --no-startup-id feh --bg-scale /home/binam/Pictures/backgroundpics/Dragon.JPG
+# exec sudo mount /dev/sda6 /mnt/WPI        #Mount my WPI drive
+# exec sudo mount /dev/sda5 /mnt/C
+exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 2 --config /dev/null --inactive-dim 0.10 --blur-background
+exec --no-startup-id feh --bg-fill ~/Images/train.gif &
+#exec --no-startup-id mpv --wid 0 --loop ~/Images/train.gif &
