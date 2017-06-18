@@ -1,10 +1,20 @@
 [user]
-	name = binamkayastha
-	email = binamkayastha@gmail.com
+    name = binamkayastha
+    email = binamkayastha@gmail.com
 [core]
-	autocrlf = input
+    autocrlf = input
 [alias]
-	l = log --graph --oneline --decorate
-	ll = log --graph --oneline --decorate --branches --tags
-	lll = log --graph --oneline --decorate --all
-	undo = reset HEAD~
+    br = branch
+    ci = commit
+    co = checkout
+    df = diff
+    dfc = diff --cached
+    dfs = diff --staged
+    lg = log --patch --find-renames --find-copies
+    lgf = log --stat --find-renames --find-copies
+    lgs = log --format=oneline --abbrev-commit
+    lol = log --graph --decorate --format=oneline --abbrev-commit
+    lola = log --graph --decorate --format=oneline --abbrev-commit --all
+    ls = ls-files
+    st = status
+    undo = reset HEAD~
