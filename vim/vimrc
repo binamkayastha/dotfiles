@@ -83,6 +83,11 @@ set listchars=tab:··,trail:·,extends:>,precedes:<,nbsp:+
 set spelllang=en
 set spellfile=$HOME/spell/en.utf-8.add
 
+" " C
+:autocmd FileType c :set spell
+:autocmd FileType c :hi clear SpellBad
+:autocmd FileType c :hi SpellBad cterm=undercurl
+
 :inoremap jk <esc>
 :inoremap JK <esc>
 noremap  <buffer> <silent> k gk
@@ -102,9 +107,9 @@ let maplocalleader = " "
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 
 " Abbreviations
+" " Latex
 :autocmd FileType tex :iabbrev starttex \documentclass{article}<CR>\usepackage{graphicx}<CR>\usepackage{float}<CR>\usepackage{indentfirst}<CR><CR>\begin{document}<CR>\title{class - HW# - Name}<CR>\author{Binam Kayastha}<CR>\date{\today}<CR>\maketitle<CR>\end{document}
 :autocmd FileType tex :iabbrev sec \section
-" Had to be changed into inoremap, because it contians the word sub
 :autocmd FileType tex :inoremap ssn \subsection
 :autocmd FileType tex :inoremap sssn \subsubsection
 :autocmd FileType tex :inoremap ssssn \subsubsubsection
@@ -133,6 +138,11 @@ let maplocalleader = " "
 :autocmd FileType tex :inoremap funck \(\)<esc>hi
 :autocmd FileType tex :inoremap funcline \[\]<esc>hi
 :autocmd FileType tex :inoremap bold \textbf{}<esc>i
+
+" " Doxygen
+:autocmd FileType c :inoremap @p @param
+:autocmd FileType c :inoremap @r @return
+
 
 " Plugin Stuff
 " Does fugitive do gitgutter? What are vim tab buffers?
