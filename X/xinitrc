@@ -8,12 +8,16 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 compton -b --vsync opengl-swc --backend glx -f -D 5 --config /dev/null --inactive-dim 0.10 &
 redshift-gtk &
+conky &
+thunar --daemon &
 
 xrdb .Xresources &
 
-tilda &
+unclutter &
 
 ssh-agent bash && ssh-add ~/.ssh/id_rsa &
+
+setxkbmap -option "caps:swapescape"
 
 dunst &
 i3

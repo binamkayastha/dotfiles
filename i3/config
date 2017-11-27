@@ -10,20 +10,21 @@ set $mod Mod4
 #font pango:DejaVu Sans Mono 8
 #font pango:monospace 8
 #font pango:Monofur 12
-font pango:inconsolata 10
+font pango:inconsolata 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec evilvte
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+j focus down
@@ -92,21 +93,19 @@ set $ws9 "9:♜"
 # 
 set $ws10 "10:⚒"
 
-set $sk [class="Skype"] move workspace
+for_window [class="Skype"] split enable
 
 # switch to workspace, move skype with it
-bindsym $mod+1 workspace $ws1; $sk $ws1
-bindsym $mod+2 workspace $ws2; $sk $ws2
-bindsym $mod+3 workspace $ws3; $sk $ws3
-bindsym $mod+4 workspace $ws4; $sk $ws4
-bindsym $mod+5 workspace $ws5; $sk $ws5
-bindsym $mod+6 workspace $ws6; $sk $ws6
-bindsym $mod+7 workspace $ws7; $sk $ws7
-bindsym $mod+8 workspace $ws8; $sk $ws8
-bindsym $mod+9 workspace $ws9; $sk $ws9
-bindsym $mod+0 $sk $ws10; workspace $ws10
-bindsym Control+l workspace prev
-bindsym Control+semicolon workspace next
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -119,8 +118,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-bindsym Control+Shift+l move container to workspace prev
-bindsym Control+Shift+semicolon move container to workspace next
 
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
@@ -156,15 +153,14 @@ mode "Resize" {
 bindsym $mod+p mode "Program"
 # a mode to open different types of programs
 mode "Program" {
-    bindsym $mod+f exec firefox; mode "default"
+    bindsym $mod+b exec feh --bg-fill ~/Images/train.gif; mode "default"
     bindsym $mod+c exec google-chrome-stable; mode "default"
+    bindsym $mod+f exec firefox-no-gtk; mode "default"
+    bindsym $mod+h exec firefox https://habitica.com/#/tasks; mode "default"
     bindsym $mod+l exec i3lock -f -c 222222; mode "default"
     bindsym $mod+n exec thunar; mode "default"
-    bindsym $mod+s exec skype; mode "default"
-    bindsym $mod+p exec pomello; mode "default"
-    bindsym $mod+i exec google-chrome-stable https://inbox.google.com; mode "default"
-    bindsym $mod+t exec google-chrome-stable https://trello.com; mode "default"
-    bindsym $mod+h exec firefox https://habitica.com/#/tasks; mode "default"
+    bindsym $mod+s exec skypeforlinux; mode "default"
+    bindsym $mod+z exec zathura; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -224,8 +220,8 @@ client.urgent             #2f343a #000000 #ffffff #000000
 client.placeholder        #000000 #000000 #ffffff #000000
 
 # Changing keybaord layouts
-bindsym $mod+Shift+d exec setxkbmap dvorak
-bindsym $mod+Shift+o exec setxkbmap us
+#bindsym $mod+Shift+d exec setxkbmap dvorak
+#bindsym $mod+Shift+o exec setxkbmap us
 
 # Turning Screen
 bindsym Mod1+Control+Up     exec --no-startup-id turnUp.sh
@@ -240,6 +236,13 @@ bindsym Mod1+Control+Right  exec --no-startup-id turnRight.sh
 # Change sound volume, and update i3blocks:
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+ && exec pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%- && exec pkill -RTMIN+10 i3blocks
+bindsym Shift+XF86AudioRaiseVolume exec amixer sset Master 10%+ && exec pkill -RTMIN+10 i3blocks
+bindsym Shift+XF86AudioLowerVolume exec amixer sset Master 10%- && exec pkill -RTMIN+10 i3blocks
+bindsym $mod+Shift+XF86AudioRaiseVolume exec amixer sset Master 50%+ && exec pkill -RTMIN+10 i3blocks
+bindsym $mod+Shift+XF86AudioLowerVolume exec amixer sset Master 50%- && exec pkill -RTMIN+10 i3blocks
+
+bindsym $mod+Shift+Up exec amixer sset Master 5%+ && exec pkill -RTMIN+10 i3blocks
+bindsym $mod+Shift+Down exec amixer sset Master 5%- && exec pkill -RTMIN+10 i3blocks
 # Amazing hack to allow mute to work without pulse audio
 bindsym XF86AudioMute exec amixer sset Master toggle && exec pkill -RTMIN+10 i3blocks && amixer sset Headphone unmute && amixer sset Speaker unmute
 
@@ -249,12 +252,16 @@ bindsym XF86MonBrightnessDown exec light -U 5.0  # decrease screen brightness
 
 #Print screen and save to ~/screenshots/ folder through scrot
 bindsym Print exec scrot -e 'mv $f ~/screenshots/'
-bindsym $mod+Print exec scrot -s -e 'mv $f ~/screenshots'
+bindsym --release $mod+Print exec scrot -s -e 'mv $f ~/screenshots'
 
 # Media player controls
 bindsym $mod+XF86AudioMute exec playerctl play-pause && exec pkill -RTMIN+12 i3blocks
 bindsym $mod+XF86AudioLowerVolume exec playerctl previous && exec pkill -RTMIN+12 i3blocks
 bindsym $mod+XF86AudioRaiseVolume exec playerctl next && exec pkill -RTMIN+12 i3blocks
+
+bindsym $mod+Down exec playerctl play-pause && exec pkill -RTMIN+12 i3blocks
+bindsym $mod+Left exec playerctl previous && exec pkill -RTMIN+12 i3blocks
+bindsym $mod+Right exec playerctl next && exec pkill -RTMIN+12 i3blocks
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next

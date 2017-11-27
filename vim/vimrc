@@ -83,19 +83,25 @@ set listchars=tab:··,trail:·,extends:>,precedes:<,nbsp:+
 set spelllang=en
 set spellfile=$HOME/spell/en.utf-8.add
 
+" Removes trailing spaces
+" command Notrail %s/\s\+$//e
+
 " " C
 :autocmd FileType c :set spell
 :autocmd FileType c :hi clear SpellBad
-:autocmd FileType c :hi SpellBad cterm=undercurl
+:autocmd FileType c :hi SpellBad cterm=underline
+:autocmd FileType c :match ErrorMsg '\%>80v.\+'
 
-:inoremap jk <esc>
-:inoremap JK <esc>
+inoremap chk ✔ <ESC>0j
+inoremap currdate <ESC>"=strftime("%a %d %b %Y")<CR>Pa
+
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
-:vnoremap <C-c> "+y
-:noremap ; l
-:noremap l h
-:nnoremap <Space> <Nop>
+vnoremap <C-c> "+y
+nnoremap <CR> o<ESC>
+nnoremap <Space> <Nop>
 let mapleader = ","
 let maplocalleader = " "
 
@@ -130,7 +136,7 @@ let maplocalleader = " "
 :autocmd FileType tex :iabbrev R$ I\!R
 :autocmd FileType tex :inoremap sigma \sum_{i=1}^n
 :autocmd FileType tex :inoremap frac \frac{}{}<esc>hhi
-:autocmd FileType tex :inoremap fracb \(\frac{}{}\)<esc>hhhhi
+:autocmd FileType tex :inoremap fracb \\frac{}{}\)<esc>hhhhi
 :autocmd FileType tex :inoremap theta \theta
 :autocmd FileType tex :inoremap thetab \(\theta\)
 :autocmd FileType tex :inoremap fsub _{}<esc>i
@@ -140,8 +146,15 @@ let maplocalleader = " "
 :autocmd FileType tex :inoremap bold \textbf{}<esc>i
 
 " " Doxygen
-:autocmd FileType c :inoremap @p @param
-:autocmd FileType c :inoremap @r @return
+" For once, these whitespaces are intentional:
+:autocmd FileType c :inoremap @p @param 
+:autocmd FileType c :inoremap @r @return 
+
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature  
+  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+endif
+" This is a comment
 
 
 " Plugin Stuff
@@ -159,6 +172,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug '907th/vim-auto-save'
+Plug 'wikitopian/hardmode'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " " airline
@@ -184,3 +200,5 @@ let g:airline#extensions#branch#enabled = 1
 " " NERDcommenter
 let g:NERDSpaceDelims = 1
 
+" " AutoSave
+let g:auto_save = 1

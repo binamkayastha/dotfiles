@@ -21,9 +21,14 @@ alias xauto='xrandr --output DP2 --auto'
 alias xin='xrandr --output DP2 --auto'
 alias xr='xrandr --output DP2 --right-of eDP1'
 alias xout='xrandr --output DP2 --off'
+alias xautoe='xrandr --output eDP1 --auto'
+alias xine='xrandr --output eDP1 --auto'
+alias xoute='xrandr --output eDP1 --off'
 alias ctl='systemctl'
 alias emacs='emacs -nw'
-alias copy='evilvte . &'
+alias copy='termite &'
+alias word='wine .wine/drive_c/Program\ Files/Microsoft\ Office/Office14/WINWORD.EXE'
+alias excel='wine .wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE'
 
 # Personal Programs
 alias optstudy='cd /WPI/Documents/programming/Progrez\ project/OptimalStudy/build-OptimalStudy-Desktop-Debug/ && ./OptimalStudy'
@@ -33,6 +38,7 @@ alias ba='echo -n \" > ~/bookmark && echo -n $(pwd) >> ~/bookmark && echo -n \" 
 # Networks
 alias wifi='sudo wpa_supplicant -c ~/.config/CA/wpi_wireless.conf -i wlp3s0'
 alias wifie='sudo wpa_supplicant -c ~/.config/CA/wpi_wireless_eduroam.conf -i wlp3s0 -D nl80211'
+alias wifih='sudo systemctl restart NetworkManager'
 alias dwifi='sudo dhcpcd wlp3s0'
 alias wifikill='sudo killall wpa_supplicant dhcpcd'
 alias pingg='ping www.google.com'

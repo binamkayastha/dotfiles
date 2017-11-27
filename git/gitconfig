@@ -14,7 +14,9 @@
     lgf = log --stat --find-renames --find-copies
     lgs = log --format=oneline --abbrev-commit
     lol = log --graph --decorate --format=oneline --abbrev-commit
+    lolh = !git --no-pager lol -30
     lola = log --graph --decorate --format=oneline --abbrev-commit --all
+    lolah = !git --no-pager lola -20
     ls = ls-files
     st = status
     undo = reset HEAD~

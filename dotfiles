@@ -1,9 +1,6 @@
 [[vim]]
 vim/vimrc -> .vimrc
 
-[[bspwm]]
-bspwm/bspwmrc -> .config/bspwm/bspwmrc
-
 [[git]]
 git/gitconfig -> .gitconfig
 
@@ -11,33 +8,16 @@ git/gitconfig -> .gitconfig
 bash/bashrc -> .bashrc
 bash/bash_aliases -> .bash_aliases
 
-[[sxhkd]]
-sxhkd/sxhkdrc -> .config/sxhkd/sxhkdrc
-
 [[i3]]
-i3/config -> .i3/config
-i3/conky-i3bar -> .i3/conky-i3bar
-i3/i3conkyrc -> .i3/.i3conkyrc
+i3/config -> .config/i3/config
 i3/i3blocks.conf -> .i3blocks.conf
-i3/i3pystatusconfig -> .i3/.i3pystatusconfig
-i3/i3pystatusconfigbottom -> .i3/.i3pystatusconfigbottom
-i3/i3pystatusconfigtop -> .i3/.i3pystatusconfigtop
-
-[[scripts]]
-scripts/battery/batteryNotif.sh -> crontabScripts/batteryNotif.sh
-scripts/battery/batteryCheck.sh -> crontabScripts/batteryCheck.sh
-scripts/screen_orientation/turnDown.sh -> bin/turnDown.sh
-scripts/screen_orientation/turnLeft.sh -> bin/turnLeft.sh
-scripts/screen_orientation/turnRight.sh -> bin/turnRight.sh
-scripts/screen_orientation/turnUp.sh -> bin/turnUp.sh
-scripts/rdp.sh -> rdp.sh
-scripts/vimTerminal.sh -> vimTerminal.sh
 
 [[X]]
 X/xinitrc -> .xinitrc
 X/Xresources -> .Xresources
 
-[[tint3]]
-tint3/stalonetrayrc -> .stalonetrayrc
-tint3/tint3rc -> .tint3rc
+[[zsh]]
+zsh/zshrc -> .zshrc
 
+[[termite]]
+termite/config -> .config/termite/config
