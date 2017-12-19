@@ -18,6 +18,7 @@ X/Xresources -> .Xresources
 
 [[zsh]]
 zsh/zshrc -> .zshrc
+zsh/binam.zsh-theme -> .oh-my-zsh/themes/binam.zsh-theme
 
 [[termite]]
 termite/config -> .config/termite/config
