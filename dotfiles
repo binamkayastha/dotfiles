@@ -22,3 +22,6 @@ zsh/binam.zsh-theme -> .oh-my-zsh/themes/binam.zsh-theme
 
 [[termite]]
 termite/config -> .config/termite/config
+
+[[misc]]
+misc/asoundrc -> .asoundrc
