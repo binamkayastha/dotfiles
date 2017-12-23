@@ -23,5 +23,10 @@ zsh/binam.zsh-theme -> .oh-my-zsh/themes/binam.zsh-theme
 [[termite]]
 termite/config -> .config/termite/config
 
+[[ranger]]
+ranger/bookmarks -> .config/ranger/bookmarks
+ranger/rc.conf -> .config/ranger/rc.conf
+ranger/rifle.conf -> .config/ranger/rifle.conf
+
 [[misc]]
 misc/asoundrc -> .asoundrc
