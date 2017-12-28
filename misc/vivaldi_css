@@ -1,0 +1,5 @@
+Add this to /opt/vivaldi/resources/vivaldi/style/common.css
+#header {
+  display: none !important;
+}
+
