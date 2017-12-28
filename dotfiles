@@ -10,7 +10,10 @@ bash/bash_aliases -> .bash_aliases
 
 [[i3]]
 i3/config -> .config/i3/config
-i3/i3blocks.conf -> .i3blocks.conf
+i3/i3blocks/i3blocks.conf -> .i3blocks.conf
+i3/i3blocks/blocks/battery0 -> .config/i3/blocks/battery0
+i3/i3blocks/blocks/battery1 -> .config/i3/blocks/battery1
+i3/i3blocks/blocks/calendar -> .config/i3/blocks/calendar
 
 [[X]]
 X/xinitrc -> .xinitrc
