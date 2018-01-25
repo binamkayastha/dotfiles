@@ -106,9 +106,6 @@ let mapleader = ","
 let maplocalleader = " "
 
 " AUTOCOMMANDS
-" Auto turn on NERDTree
-:autocmd BufWinEnter * NERDTreeMirror
-
 " Turns of wrapping in html files
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 
@@ -162,20 +159,31 @@ endif
 " Why does fugitive not work with soft linked files
 " Git add certain lines
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'easymotion/vim-easymotion'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'tpope/vim-surround'
 Plug '907th/vim-auto-save'
-Plug 'wikitopian/hardmode'
-Plug 'leafgarland/typescript-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/syntastic' " Does syntax checking for a lot of languages
+Plug 'tpope/vim-fugitive' "Gedit/Gstatus/Gdiff/Gblame
+Plug 'tpope/vim-commentary'
+Plug 'vim-airline/vim-airline'
 call plug#end()
+
+" " AutoSave
+let g:auto_save = 1
+
+" " EasyMotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+" Move to line
+map <Leader>l <Plug>(easymotion-bd-jk)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+
+" " For commentary
+nmap <C-_> gcc
+vmap <C-_> gcc
 
 " " airline
 set laststatus=2
@@ -197,8 +205,5 @@ let g:airline_symbols.maxlinenr=''
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 
-" " NERDcommenter
-let g:NERDSpaceDelims = 1
-
-" " AutoSave
-let g:auto_save = 1
+" Install exuberant-ctags to use ctrl-] to jumpt to definitoins
+:set tags+=$HOME/programming/Projects/ETodo/tags
