@@ -20,4 +20,6 @@ ssh-agent bash && ssh-add ~/.ssh/id_rsa &
 setxkbmap -option "caps:swapescape"
 
 dunst &
+xkey &
+synclient MaxTypeTime=0 &
 i3

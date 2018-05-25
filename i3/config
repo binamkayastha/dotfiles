@@ -73,25 +73,24 @@ mode "Focus" {
 }
 
 # Main
-set $ws1 "1:"
+set $ws1 "1: Main"
 # Code
-set $ws2 "2:"
+set $ws2 "2: Code"
 # Read/Research
-set $ws3 "3:"
+set $ws3 "3: Read"
 # Testing
-set $ws4 "4:"
+set $ws4 "4: Test"
 # 
-set $ws5 "5:☯"
-# 
-set $ws6 "6:⚔"
+set $ws5 "5: 5 Videos"
+set $ws6 "6: 6"
 # Security
-set $ws7 "7:"
+set $ws7 "7: 7"
 # 
-set $ws8 "8:☭"
+set $ws8 "8: 8"
 # 
-set $ws9 "9:♜"
+set $ws9 "9: 9"
 # 
-set $ws10 "10:⚒"
+set $ws10 "10: bg"
 
 for_window [class="Skype"] split enable
 
@@ -159,6 +158,7 @@ mode "Program" {
     bindsym $mod+h exec firefox https://habitica.com/#/tasks; mode "default"
     bindsym $mod+l exec i3lock -f -c 222222; mode "default"
     bindsym $mod+n exec thunar; mode "default"
+    bindsym $mod+q exec qtcreator; mode "default"
     bindsym $mod+s exec skypeforlinux; mode "default"
     bindsym $mod+z exec zathura; mode "default"
     bindsym Return mode "default"
@@ -194,7 +194,7 @@ bar {
     font pango:deccurs 9
 
     separator_symbol        "||"
-    tray_output eDP1
+    tray_output eDP-1
 
     colors {
         background #222222
@@ -244,7 +244,7 @@ bindsym $mod+Shift+XF86AudioLowerVolume exec amixer sset Master 50%- && exec pki
 bindsym $mod+Shift+Up exec amixer sset Master 5%+ && exec pkill -RTMIN+10 i3blocks
 bindsym $mod+Shift+Down exec amixer sset Master 5%- && exec pkill -RTMIN+10 i3blocks
 # Amazing hack to allow mute to work without pulse audio
-bindsym XF86AudioMute exec amixer sset Master toggle && exec pkill -RTMIN+10 i3blocks && amixer sset Headphone unmute && amixer sset Speaker unmute
+bindsym XF86AudioMute exec amixer sset Master toggle && amixer sset Headphone unmute && amixer sset Speaker unmute && exec pkill -RTMIN+10 i3blocks 
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5.0 # increase screen brightness
@@ -282,3 +282,6 @@ for_window [class=".*"] split toggle #toggles split at each new window
 exec --no-startup-id compton -b --vsync opengl-swc --backend glx -f -D 2 --config /dev/null --inactive-dim 0.10 --blur-background
 exec --no-startup-id feh --bg-fill ~/Images/train.gif &
 #exec --no-startup-id mpv --wid 0 --loop ~/Images/train.gif &
+#exec --no-stardup-id setxkbmap -option "caps:swapescape"
+exec --no-stardup-id thunar --daemon
+exec --no-stardup-id synclient MaxTapTime=0

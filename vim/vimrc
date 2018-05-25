@@ -68,6 +68,7 @@ else
 endif " has("autocmd")
 
 " My edits to .vimrc
+" set rnu
 set encoding=utf-8
 set t_Co=256
 set background=dark
@@ -75,13 +76,21 @@ set number
 
 set expandtab
 set shiftwidth=4
-set softtabstop=4
+"set softtabstop=4
+set tabstop=4
 set ignorecase
 set list
 set listchars=tab:··,trail:·,extends:>,precedes:<,nbsp:+
 " set listchars=tab:▸\ ,trail:·
 set spelllang=en
 set spellfile=$HOME/spell/en.utf-8.add
+set colorcolumn=80 " For code
+" folding
+set foldmethod=syntax
+set foldlevel=99
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
 
 " Removes trailing spaces
 " command Notrail %s/\s\+$//e
@@ -91,9 +100,11 @@ set spellfile=$HOME/spell/en.utf-8.add
 :autocmd FileType c :hi clear SpellBad
 :autocmd FileType c :hi SpellBad cterm=underline
 :autocmd FileType c :match ErrorMsg '\%>80v.\+'
+:autocmd FileType py :match ErrorMsg '\%>80v.\+'
 
 inoremap chk ✔ <ESC>0j
 inoremap currdate <ESC>"=strftime("%a %d %b %Y")<CR>Pa
+inoremap jk WHY U DU THIS TO ME<ESC>
 
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
@@ -158,20 +169,33 @@ endif
 " Does fugitive do gitgutter? What are vim tab buffers?
 " Why does fugitive not work with soft linked files
 " Git add certain lines
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.nvim')
 "Plug 'leafgarland/typescript-vim'
 "Plug 'tpope/vim-surround'
 Plug '907th/vim-auto-save'
 Plug 'airblade/vim-gitgutter'
+Plug 'dyng/ctrlsf.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/syntastic' " Does syntax checking for a lot of languages
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'neomake/neomake'
+Plug 'pangloss/vim-javascript'
+Plug 'peterhoeg/vim-qml'
+Plug 'terryma/vim-multiple-cursors' " Use Ctrl+n in normal mode
 Plug 'tpope/vim-fugitive' "Gedit/Gstatus/Gdiff/Gblame
+Plug 'junegunn/gv.vim' " Goes on to pof fugitive. Better log checking
 Plug 'tpope/vim-commentary'
-Plug 'vim-airline/vim-airline'
+" Plug 'valloric/youcompleteme'
+" Plug 'vim-airline/vim-airline'
+Plug 'wlangstroth/vim-racket'
 call plug#end()
 
 " " AutoSave
 let g:auto_save = 1
+
+
+" " CtrlSf
+nmap <C-F>f <Plug>CtrlSFPrompt
 
 " " EasyMotion
 " <Leader>f{char} to move to {char}
@@ -181,29 +205,52 @@ map <Leader>l <Plug>(easymotion-bd-jk)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 
+" " tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" " neomake
+let g:neomake_open_list = 2
+
 " " For commentary
-nmap <C-_> gcc
-vmap <C-_> gcc
+nmap <C-_> gccj
+vmap <C-_> gc
+autocmd FileType rkt setlocal commentstring=;\ %s
 
-" " airline
-set laststatus=2
-let g:airline_enable_branch=1
-let g:airline_inactive_collapse=1
-let g:airline_detect_spell=1
+" " For syntastic
+" Potential other fix:
+"   force  a :redraw! on "events" that scramble the screen with
+"   syntax highlighting enabled.
+"
+" set ttyfast
+" au FileWritePost * :redraw!
+" au TermResponse * :redraw!
+" au TextChanged * :redraw!
+" au QuickFixCmdPre * :redraw!
+" au QuickFixCmdPost * :redraw!
+"
+autocmd VimEnter * nnoremap <silent> <c-j> :TmuxNavigateDown<cr>:redraw!<cr>
 
-let g:airline_powerline_fonts=1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_symbols.branch=':'
-let g:airline_symbols.linenr=''
-let g:airline_symbols.maxlinenr=''
-"let g:airline_section_z = airline#section#create_right(['linenr', 'maxlinenr'])
+"" " airline
+"set laststatus=2
+"let g:airline_enable_branch=1
+"let g:airline_inactive_collapse=1
+"let g:airline_detect_spell=1
 
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
+"let g:airline_powerline_fonts=1
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+"let g:airline_symbols.branch=':'
+"let g:airline_symbols.linenr=''
+"let g:airline_symbols.maxlinenr=''
+""let g:airline_section_z = airline#section#create_right(['linenr', 'maxlinenr'])
+
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#branch#enabled = 1
 
 " Install exuberant-ctags to use ctrl-] to jumpt to definitoins
 :set tags+=$HOME/programming/Projects/ETodo/tags
+:set tags+=$HOME/mpq/HeadTracking
+:nnoremap <C-]> <C-w><C-]><C-w>T

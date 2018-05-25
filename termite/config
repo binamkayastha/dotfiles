@@ -7,7 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Monospace 9
+font = Monospace bold 9
 #font = pango:deccurs.pcf 12
 scrollback_lines = 10000
 search_wrap = true
@@ -57,12 +57,14 @@ color6 = #8cd0d3
 color7 = #dcdccc
 color8 = #709080
 color9 = #dca3a3
-color10 = #c3bf9f
+# color10 = #c3bf9f
+color10 = #00cc00
 color11 = #f0dfaf
 color12 = #94bff3
 color13 = #ec93d3
 color14 = #93e0e3
 color15 = #ffffff
+
 
 [hints]
 font = Monofur 12

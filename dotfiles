@@ -1,5 +1,7 @@
 [[vim]]
 vim/vimrc -> .vimrc
+vim/vimrc -> ~/.config/nvim/init.vim
+~/.vim -> ~/.nvim
 
 [[git]]
 git/gitconfig -> .gitconfig

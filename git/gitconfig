@@ -3,6 +3,7 @@
     email = binamkayastha@gmail.com
 [core]
     autocrlf = input
+    pager = less
 [alias]
     br = branch
     ci = commit
